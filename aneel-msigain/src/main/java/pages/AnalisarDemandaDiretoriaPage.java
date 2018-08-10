@@ -167,6 +167,11 @@ public class AnalisarDemandaDiretoriaPage {
 		dsl.clicarBotao(By.id("btnRetornarDiretoria"));
 	}
 	
+	public void informarAnaliseRetorno(String retorno) throws InterruptedException {
+		Thread.sleep(1000);
+		dsl.escrever(By.name("DscAnaliseDemanda"), retorno );
+	}
+	
 	
 	
 }

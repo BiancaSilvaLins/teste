@@ -60,7 +60,7 @@ public class AnalisarDemandaDiretoria {
 		}
 	}
 	
-	@Ignore
+	@Test
 	public void CT01() throws InterruptedException {
 		WebDriverWait wait = new WebDriverWait(driver, 30);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/section/header/ul[1]/li[3]/a")));
@@ -86,7 +86,7 @@ public class AnalisarDemandaDiretoria {
 		page.salvoUorg();
 	}
 	
-	@Ignore
+	@Test
 	public void CT02() throws InterruptedException{
 		WebDriverWait wait = new WebDriverWait(driver, 30);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/section/header/ul[1]/li[3]/a")));
@@ -111,7 +111,7 @@ public class AnalisarDemandaDiretoria {
 		
 	}
 	
-	@Ignore
+	@Test
 	public void CT03() throws InterruptedException{
 		WebDriverWait wait = new WebDriverWait(driver, 30);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/section/header/ul[1]/li[3]/a")));
@@ -125,7 +125,7 @@ public class AnalisarDemandaDiretoria {
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("loading")));
 		page.clicarManifestacaoDiretoria();
 		
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='tableAnalisarComManifestacaoDiretoria']/tbody/tr/td[1]/a")));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='tableAnalisarComManifestacaoDiretoria']/tbody/tr/td[1]")));
 		page.clicarDemanda3();
 		page.informarAnaliseAin3("Teste automatizado");
 		page.clicarSalvar3();
@@ -136,7 +136,7 @@ public class AnalisarDemandaDiretoria {
 		page.salvoDiretoria();
 	}
 	
-	@Ignore
+	@Test
 	public void CT04() throws InterruptedException{
 		WebDriverWait wait = new WebDriverWait(driver, 30);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/section/header/ul[1]/li[3]/a")));
@@ -198,10 +198,16 @@ public class AnalisarDemandaDiretoria {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='tableAnalisarComManifestacaoDiretoria']/tbody/tr/td[1]/a")));
 		page.clicarDemanda3();
 		
+		page.informarAnaliseRetorno("Teste automatizado");
+		
 		page.retornarDiretoria();
 		
+		
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("loading")));
+		util.mudarPerfil();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/section/header/ul[1]/li[3]/a")));
 		util.selecionarPerfilDiretoria();
+		
 		
 		page.clicarDiretoriaPendente();
 		page.clicarDeterminacaoDiretoria();
@@ -214,5 +220,5 @@ public class AnalisarDemandaDiretoria {
 		
 		
 	}
-
+	
 }
